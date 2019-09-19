@@ -1,0 +1,49 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+}
+
+.toolbar-content {
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, .24);
+
+}
+
+/* 
+.sidenav .mat-toolbar {
+  background: inherit;
+}*/
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+.mat-expansion-panel-header {
+  padding: 0 16px !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+div.mat-expansion-panel-body {
+  padding: 0px 0px 10px;
+}
+
+div.mat-list-item-content {
+  font-size: 14px;
+  padding: 0 0 0 40px !important;
+}
+
+
+mat-nav-list.mat-nav-list {
+  padding-top: 0;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0 1px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}

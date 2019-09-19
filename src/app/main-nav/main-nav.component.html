@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-accordion multi="true" displayMode="flat">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title mat-list-item>
+              Hospital
+            </mat-panel-title>
+            <mat-divider [inset]="true"></mat-divider>
+          </mat-expansion-panel-header>
+          <a mat-list-item [routerLink]="['/hospital/add']">Add Hospital</a>
+          <a mat-list-item [routerLink]="['/hospital/list']">List Hospitals</a>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Doctor
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Panel content goes here</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar-content">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Hospital Appointment System</span>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

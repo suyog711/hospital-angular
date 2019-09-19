@@ -1,0 +1,49 @@
+table {
+  width: 100%;
+}
+
+.example-card {
+  max-width: 1200px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.list-hospital {
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+.edit-button {
+  margin-right: 8px;
+}
+
+
+td.mat-cell:last-of-type {
+  padding-right: 0px;
+
+}
+
+th.mat-header-cell:last-of-type {
+  padding-right: 0px;
+}
+
+.inactive-button {
+  width: 120px;
+}
+
+.active-button {
+  width: 120px;
+  background-color: green;
+}
+
+
+
+
+/* 
+td,
+th {
+  width: 20%;
+} */

@@ -1,0 +1,162 @@
+<div class="container-fluid add-hospital">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Add Hospital</mat-card-title>
+      <mat-card-subtitle>Add a new hospital in the database</mat-card-subtitle>
+    </mat-card-header>
+    <form #addHospitalForm="ngForm" class="example-form">
+      <mat-card-content>
+        <mat-form-field appearance="standard" class="example-full-width">
+          <mat-label for="name">Name</mat-label>
+          <input matInput placeholder="Name" name="name" [(ngModel)]="hospital.name">
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="verificationType">Verification Type</mat-label>
+                <input matInput placeholder="Verification Type" name="verificationType"
+                  [(ngModel)]="hospital.verificationType">
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="verificationNumber">Verification Number</mat-label>
+                <input matInput placeholder="Verification Number" name="verificationNumber"
+                  [(ngModel)]="hospital.verificationNumber">
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="phone1">Phone Number</mat-label>
+                <span matPrefix>+977 &nbsp;</span>
+                <input matInput placeholder="Phone Number" name="phone1" [(ngModel)]="phone1">
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="phone2">2nd Phone Number</mat-label>
+                <span matPrefix>+977 &nbsp;</span>
+                <input matInput placeholder="Phone Number" name="phone2" [(ngModel)]="phone2">
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="emergencyNumber">Emergency Phone Number</mat-label>
+                <span matPrefix>+977 &nbsp;</span>
+                <input matInput placeholder="Emergency Phone Number" name="emergencyNumber"
+                  [(ngModel)]="emergencyNumber">
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="email">Email</mat-label>
+                <input matInput placeholder="Email" name="email" [(ngModel)]="hospital.email">
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <mat-form-field appearance="standard" class="example-full-width">
+          <mat-label for="website">Website</mat-label>
+          <input matInput placeholder="Website" name="website" [(ngModel)]="hospital.website">
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="example-full-width">
+          <mat-label for="address">Address</mat-label>
+          <input matInput placeholder="Address" name="address" [(ngModel)]="hospital.address">
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="example-full-width">
+          <mat-label for="address2">Address 2</mat-label>
+          <input matInput placeholder="Address 2" name="address2" [(ngModel)]="hospital.address2">
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="city">City</mat-label>
+                <mat-select name="city" [(ngModel)]="hospital.city">
+                  <mat-option *ngFor="let city of cities" [value]="city">
+                    {{city}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="standard" class="example-full-width">
+                <mat-label for="state">State</mat-label>
+                <input matInput placeholder="State" name="state" [(ngModel)]="hospital.state">
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <mat-form-field appearance="standard" class="example-full-width">
+          <mat-label for="description">Description</mat-label>
+          <textarea matInput placeholder="Description" name="description" [(ngModel)]="hospital.description"></textarea>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-label for="addDepartmentNow">Do you want to add department right now?</mat-label>
+        <mat-radio-group name="addDepartmentNow" [(ngModel)]="addDepartmentNow" (change)="changeAddDepartmentNow()">
+          <mat-radio-button [value]="true">Yes</mat-radio-button>
+          <mat-radio-button [value]="false">No</mat-radio-button>
+        </mat-radio-group>
+
+        <div *ngIf="addDepartmentNow">
+          <!-- <mat-form-field class="example-chip-list">
+            <mat-chip-list #chipFruitList>
+              <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable" (removed)="remove(fruit)">
+                {{fruit}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="New fruit..." #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipFruitList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> -->
+
+          <mat-form-field class="example-chip-list">
+            <mat-chip-list #chipDeptList>
+              <mat-chip *ngFor="let selectedDept of selectedDepartments" [selectable]="selectable"
+                [removable]="removable" (removed)="removeDept(selectedDept)">
+                {{selectedDept.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="New department..." #deptInput [formControl]="deptCtrl" [matAutocomplete]="auto"
+                [matChipInputFor]="chipDeptList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addDept($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedDept($event)">
+              <mat-option *ngFor="let filteredDept of filteredDepartments | async" [value]="filteredDept">
+                {{filteredDept.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="submit()">Create</button>
+        <button mat-button (click)="cancel()">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
